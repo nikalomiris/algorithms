@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/nikalomiris/algorithms.svg?branch=master)](https://travis-ci.org/nikalomiris/algorithms)
+# Algorithms [![Build Status](https://travis-ci.org/nikalomiris/algorithms.svg?branch=master)](https://travis-ci.org/nikalomiris/algorithms)
 
-# Algorithms
 This repository contains the implementation of various algorithms.
 
 Clone the project and run ```mvn clean install```
