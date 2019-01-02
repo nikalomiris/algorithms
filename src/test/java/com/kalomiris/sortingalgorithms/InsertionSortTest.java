@@ -4,20 +4,51 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
-import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;
 
 class InsertionSortTest {
 
-    List<Integer> input = Arrays.asList(3, 2, 1, 6, 5, 4, 9, 8, 7);
-    List<Integer> output = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    Random random = new Random();
+
+    int arraysSize = 100000;
 
     InsertionSort insertionSort = new InsertionSort();
 
     @Test
     void sort() {
-        assertThat(insertionSort.sort(input), is(output));
+
+        List<Integer> averageCaseInput = new ArrayList<>();
+
+        for (int i = 0; i < arraysSize; i++) {
+            averageCaseInput.add(random.nextInt(100));
+        }
+        List<Integer> bestCaseInput = new ArrayList<>(averageCaseInput);
+        Collections.sort(bestCaseInput);
+        List<Integer> worstCaseInput = new ArrayList<>(bestCaseInput);
+        Collections.reverse(worstCaseInput);
+        List<Integer> output = new ArrayList<>(bestCaseInput);
+
+//        System.out.println(bestCaseInput.toString());
+//        System.out.println(averageCaseInput.toString());
+//        System.out.println(worstCaseInput.toString());
+
+        long startTime = System.currentTimeMillis();
+        assertThat(insertionSort.sort(bestCaseInput), is(output));
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+        System.out.println("Insertion sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in best case");
+
+        startTime = System.currentTimeMillis();
+        assertThat(insertionSort.sort(averageCaseInput), is(output));
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        System.out.println("Insertion sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in average case");
+
+        startTime = System.currentTimeMillis();
+        assertThat(insertionSort.sort(worstCaseInput), is(output));
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        System.out.println("Insertion sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in worst case");
     }
 }
