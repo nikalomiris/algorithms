@@ -12,7 +12,7 @@ class InsertionSortTest {
     InsertionSort insertionSort = new InsertionSort();
     Random random = new Random();
 
-    int arraysSize = 100000;
+    int arraysSize = 10000;
     long startTime, stopTime, elapsedTime;
 
     @Test
