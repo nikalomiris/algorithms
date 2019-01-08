@@ -1,21 +1,17 @@
 package com.kalomiris.sortingalgorithms;
 
-import java.util.List;
-
 public class InsertionSort {
 
-    public List<Integer> sort(List<Integer> integers) {
+    public void sort(int[] integers, int start, int finish) {
 
-        for (int j = 1; j < integers.size(); j++) {
-            int key = integers.get(j);
+        for (int j = start; j <= finish; j++) {
+            int key = integers[j];
             int i = j - 1;
-            while (i >= 0 && integers.get(i) > key) {
-                integers.set(i + 1, integers.get(i));
+            while (i >= 0 && integers[i] > key) {
+                integers[i + 1] = integers[i];
                 i--;
             }
-            integers.set(i + 1, key);
+            integers[i + 1] = key;
         }
-
-        return integers;
     }
 }

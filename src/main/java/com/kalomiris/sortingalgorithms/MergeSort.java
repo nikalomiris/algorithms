@@ -2,14 +2,26 @@ package com.kalomiris.sortingalgorithms;
 
 public class MergeSort {
 
-    public int[] sort(int[] numbers, int start, int end) {
+    InsertionSort insertionSort = new InsertionSort();
+
+    public void sort(int[] numbers, int start, int end) {
         if (start < end) {
             int middle = (start + end)/2;
             sort(numbers, start, middle);
             sort(numbers, middle + 1, end);
             merge(numbers, start, middle, end);
         }
-        return numbers;
+    }
+
+    public void hybridSort(int[] numbers, int start, int end, int threshhold) {
+        if (end - start < threshhold) {
+            insertionSort.sort(numbers, start, end);
+        } else {
+            int middle = (start + end)/2;
+            hybridSort(numbers, start, middle, threshhold);
+            hybridSort(numbers, middle + 1, end, threshhold);
+            merge(numbers, start, middle, end);
+        }
     }
 
     private void merge(int[] numbers, int start, int middle, int end) {

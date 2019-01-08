@@ -18,42 +18,52 @@ class InsertionSortTest {
     @Test
     void sort() {
 
-        // Initialize average case input
-        List<Integer> averageCaseInput = new ArrayList<>();
+        // Initialize Arrays
+        int[] averageCaseInput = new int[arraysSize];
+        int[] bestCaseInput = new int[arraysSize];
+        int[] worstCaseInput = new int[arraysSize];
+        int[] output = new int[arraysSize];
         for (int i = 0; i < arraysSize; i++) {
-            averageCaseInput.add(random.nextInt(100));
+            int randNum = random.nextInt(arraysSize);
+            averageCaseInput[i] = randNum;
+            bestCaseInput[i] = randNum;
+            output[i] = randNum;
         }
 
-        // Initialize best case input
-        List<Integer> bestCaseInput = new ArrayList<>(averageCaseInput);
-        Collections.sort(bestCaseInput);
+        // Sort best case input
+        Arrays.sort(bestCaseInput);
 
-        // Initialize worst case input
-        List<Integer> worstCaseInput = new ArrayList<>(bestCaseInput);
-        Collections.reverse(worstCaseInput);
+        // Reverse sort of worst case input
+        int j = 0;
+        for (int i = arraysSize - 1; i >= 0; i--) {
+            worstCaseInput[j++] = bestCaseInput[i];
+        }
 
         // The output should be the sorted list.
-        List<Integer> output = new ArrayList<>(bestCaseInput);
+        Arrays.sort(output);
 
         // Execute and measure time for best case input
         startTime = System.currentTimeMillis();
-        assertThat(insertionSort.sort(bestCaseInput), is(output));
+        insertionSort.sort(bestCaseInput, 0, arraysSize - 1);
         stopTime = System.currentTimeMillis();
         elapsedTime = stopTime - startTime;
+        assertThat(bestCaseInput, is(output));
         System.out.println("Insertion sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in best case");
 
         // Execute and measure time for average case input
         startTime = System.currentTimeMillis();
-        assertThat(insertionSort.sort(averageCaseInput), is(output));
+        insertionSort.sort(averageCaseInput, 0, arraysSize - 1);
         stopTime = System.currentTimeMillis();
         elapsedTime = stopTime - startTime;
+        assertThat(averageCaseInput, is(output));
         System.out.println("Insertion sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in average case");
 
         // Execute and measure time for worst case input
         startTime = System.currentTimeMillis();
-        assertThat(insertionSort.sort(worstCaseInput), is(output));
+        insertionSort.sort(worstCaseInput, 0, arraysSize - 1);
         stopTime = System.currentTimeMillis();
         elapsedTime = stopTime - startTime;
+        assertThat(worstCaseInput, is(output));
         System.out.println("Insertion sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in worst case");
     }
 }

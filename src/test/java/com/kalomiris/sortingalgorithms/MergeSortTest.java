@@ -13,7 +13,7 @@ class MergeSortTest {
     MergeSort mergeSort = new MergeSort();
     Random random = new Random();
 
-    int arraysSize = 100;
+    int arraysSize = 1000;
     long startTime, stopTime, elapsedTime;
 
     @Test
@@ -21,10 +21,12 @@ class MergeSortTest {
 
         // Initialize average case input
         int[] averageCaseInput = new int[arraysSize];
+        int[] averageCaseInputHybrid = new int[arraysSize];
         int[] output = new int[arraysSize];
         for (int i = 0; i < arraysSize; i++) {
             int randomNum = random.nextInt(arraysSize) + 1;
             averageCaseInput[i] = randomNum;
+            averageCaseInputHybrid[i] = randomNum;
             output[i] = randomNum;
         }
         Arrays.sort(output);
@@ -33,12 +35,25 @@ class MergeSortTest {
         System.out.println("The array before mergesort:");
         printArray(averageCaseInput);
         startTime = System.currentTimeMillis();
-        assertThat(mergeSort.sort(averageCaseInput, 0, averageCaseInput.length - 1), is(output));
+        mergeSort.sort(averageCaseInput, 0, averageCaseInput.length - 1);
         stopTime = System.currentTimeMillis();
         elapsedTime = stopTime - startTime;
+        assertThat(averageCaseInput, is(output));
         System.out.println("The array after mergesort:");
         printArray(averageCaseInput);
         System.out.println("Merge sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in average case");
+
+        // Execute and measure time for average case input using hybrid sort
+        System.out.println("The array before mergesortHybrid:");
+        printArray(averageCaseInputHybrid);
+        startTime = System.currentTimeMillis();
+        mergeSort.hybridSort(averageCaseInputHybrid, 0, averageCaseInputHybrid.length - 1, 5);
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        assertThat(averageCaseInputHybrid, is(output));
+        System.out.println("The array after mergesortHybrid:");
+        printArray(averageCaseInputHybrid);
+        System.out.println("Hybrid Merge sort sorted " + arraysSize + " numbers in " + elapsedTime + "ms in average case");
     }
 
     /* A utility function to print array of size n */
