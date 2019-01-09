@@ -2,7 +2,7 @@ package com.kalomiris.sortingalgorithms;
 
 public class MergeSort {
 
-    InsertionSort insertionSort = new InsertionSort();
+    private InsertionSort insertionSort = new InsertionSort();
 
     public void sort(int[] numbers, int start, int end) {
         if (start < end) {
@@ -40,7 +40,9 @@ public class MergeSort {
             R[i] = numbers[middle + 1 + i];
         }
 
-        int i = 0, j = 0, k = start;
+        int i = 0;
+        int j = 0;
+        int k = start;
 
         // Copy the values from the temporary arrays to the original in a sorted manner
         while (i < n1 && j < n2) {

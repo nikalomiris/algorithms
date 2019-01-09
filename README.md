@@ -4,12 +4,12 @@ This repository contains the implementation of various algorithms.
 
 Clone the project and run ```mvn clean install```
 
-### Sorting algorithms
+## Sorting algorithms
 The implementation of various sorting algorithms:
 
-##### Insertion sort
+### Insertion sort
 Implements the following pseudocode:
-```
+```text
 for j = 1 to A.length
     key = A[j]
     // Insert A[j] into the sorted sequence A[0..j-1]

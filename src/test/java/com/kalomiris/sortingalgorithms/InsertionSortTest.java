@@ -9,14 +9,14 @@ import java.util.*;
 
 class InsertionSortTest {
 
-    InsertionSort insertionSort = new InsertionSort();
-    Random random = new Random();
+    private InsertionSort insertionSort = new InsertionSort();
+    private Random random = new Random();
 
-    int arraysSize = 10000;
-    long startTime, stopTime, elapsedTime;
+    private int arraysSize = 10000;
+    private long startTime, stopTime, elapsedTime;
 
     @Test
-    void sort() {
+    public void sort() {
 
         // Initialize Arrays
         int[] averageCaseInput = new int[arraysSize];

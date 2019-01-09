@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MergeSortTest {
 
-    MergeSort mergeSort = new MergeSort();
-    Random random = new Random();
+    private MergeSort mergeSort = new MergeSort();
+    private Random random = new Random();
 
-    int arraysSize = 1000;
-    long startTime, stopTime, elapsedTime;
+    private int arraysSize = 1000;
+    private long startTime, stopTime, elapsedTime;
 
     @Test
-    void sort() {
+    public void sort() {
 
         // Initialize average case input
         int[] averageCaseInput = new int[arraysSize];
@@ -57,7 +57,7 @@ class MergeSortTest {
     }
 
     /* A utility function to print array of size n */
-    static void printArray(int[] numbers)
+    private static void printArray(int[] numbers)
     {
         int n = numbers.length;
         for (int i = 0; i < n; i++)
