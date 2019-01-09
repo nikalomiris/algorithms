@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2415304421124c9dbf0e2aa4b07cacdd)](https://app.codacy.com/app/nikalomiris/algorithms?utm_source=github.com&utm_medium=referral&utm_content=nikalomiris/algorithms&utm_campaign=Badge_Grade_Dashboard)
 # Algorithms [![Build Status](https://travis-ci.org/nikalomiris/algorithms.svg?branch=master)](https://travis-ci.org/nikalomiris/algorithms)
 
 This repository contains the implementation of various algorithms.
