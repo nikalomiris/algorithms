@@ -9,7 +9,7 @@ public class MaximumSubarray {
         if (high == low) {
             return new int[]{low, high, array[low]};
         } else {
-            int mid = (high - low) / 2;
+            int mid = (high + low) / 2;
             tempLeft = findMaximumSubarray(array, low, mid);
             tempRight = findMaximumSubarray(array, mid + 1, high);
             tempCross = findMaxCrossingSubarray(array, low, mid, high);
