@@ -1,8 +1,28 @@
 package com.kalomiris.sortingalgorithms;
 
-import javax.jnlp.IntegrationService;
-
 public class MaximumSubarray {
+
+    public int[] findMaximumSubarray(int[] array, int low, int high) {
+
+        int[] tempLeft, tempRight, tempCross;
+
+        if (high == low) {
+            return new int[]{low, high, array[low]};
+        } else {
+            int mid = (high - low) / 2;
+            tempLeft = findMaximumSubarray(array, low, mid);
+            tempRight = findMaximumSubarray(array, mid + 1, high);
+            tempCross = findMaxCrossingSubarray(array, low, mid, high);
+
+            if (tempLeft[2] > tempRight[2] && tempLeft[2] > tempCross[2]) {
+                return tempLeft;
+            } else if (tempRight[2] > tempLeft[2] && tempRight[2] > tempCross[2]) {
+                return tempRight;
+            } else {
+                return tempCross;
+            }
+        }
+    }
 
     private int[] findMaxCrossingSubarray(int[] array, int low, int mid, int high) {
         int leftSum = Integer.MIN_VALUE;
